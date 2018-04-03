@@ -1,0 +1,12 @@
+name: melon
+version: 0.9.3
+
+authors:
+  - r00ster91 <r00ster91@outlook.com>
+
+description: |
+  A toolbox with useful methods and other stuff.
+
+crystal: 0.24.2
+
+license: MIT
