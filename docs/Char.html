@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="js/doc.js"></script>
+  <title>Char - </title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class=" " data-id="/toplevel" data-name="top level namespace">
+      <a href="toplevel.html">Top Level Namespace</a>
+      
+    </li>
+  
+  <li class=" current" data-id="/Char" data-name="char">
+      <a href="Char.html">Char</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Cursor" data-name="cursor">
+      <a href="Cursor.html">Cursor</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Melon" data-name="melon">
+      <a href="Melon.html">Melon</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Random" data-name="random">
+      <a href="Random.html">Random</a>
+      
+    </li>
+  
+  <li class=" " data-id="/Screen" data-name="screen">
+      <a href="Screen.html">Screen</a>
+      
+    </li>
+  
+  <li class=" " data-id="/String" data-name="string">
+      <a href="String.html">String</a>
+      
+    </li>
+  
+  <li class=" " data-id="/System" data-name="system">
+      <a href="System.html">System</a>
+      
+    </li>
+  
+  <li class=" " data-id="/WIP" data-name="wip">
+      <a href="WIP.html">WIP</a>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">struct</span> Char
+
+</h1>
+
+
+  <ul class="superclass-hierarchy"><li class="superclass"><a href="Char.html">Char</a></li><li class="superclass">Value</li><li class="superclass">Object</li></ul>
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>A <code><a href="Char.html">Char</a></code> represents a <a href="http://en.wikipedia.org/wiki/Unicode" target="_blank">Unicode</a> <a href="http://en.wikipedia.org/wiki/Code_point" target="_blank">code point</a>.
+It occupies 32 bits.</p>
+
+<p>It is created by enclosing an UTF-8 character in single quotes.</p>
+
+<pre><code><span class="s">'a'</span>
+<span class="s">'z'</span>
+<span class="s">'0'</span>
+<span class="s">'_'</span>
+<span class="s">'あ'</span></code></pre>
+
+<p>You can use a backslash to denote some characters:</p>
+
+<pre><code><span class="s">'\''</span> <span class="c"># single quote</span>
+<span class="s">'\\'</span> <span class="c"># backslash</span>
+<span class="s">'\e'</span> <span class="c"># escape</span>
+<span class="s">'\f'</span> <span class="c"># form feed</span>
+<span class="s">'\n'</span> <span class="c"># newline</span>
+<span class="s">'\r'</span> <span class="c"># carriage return</span>
+<span class="s">'\t'</span> <span class="c"># tab</span>
+<span class="s">'\v'</span> <span class="c"># vertical tab</span></code></pre>
+
+<p>You can use a backslash followed by at most three digits to denote a code point written in octal:</p>
+
+<pre><code></code></pre>
+
+<p>You can use a backslash followed by an <em>u</em> and four hexadecimal characters to denote a unicode codepoint written:</p>
+
+<pre><code><span class="s">'\u0041'</span> <span class="c"># == &#39;A&#39;</span></code></pre>
+
+<p>Or you can use curly braces and specify up to four hexadecimal numbers:</p>
+
+<pre><code><span class="s">'\u{41}'</span> <span class="c"># == &#39;A&#39;</span></code></pre>
+
+
+
+
+
+  <h2>Included Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type">Comparable(<a href="Char.html">Char</a>)</li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+
+
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#%2A%28other%3AInt%29-instance-method" class="signature"><strong>#*</strong>(other : Int)</a>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#vowel%3F%3ABool-instance-method" class="signature"><strong>#vowel?</strong> : Bool</a>
+        
+          <div class="summary"><p>Returns if this Char is a vowel.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+    
+
+
+    
+
+
+    
+
+
+  
+</div>
+
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="*(other:Int)-instance-method">
+      <div class="signature">
+        
+        def <strong>*</strong>(other : Int)
+
+        <a class="method-permalink" href="#%2A%28other%3AInt%29-instance-method">#</a>
+      </div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="vowel?:Bool-instance-method">
+      <div class="signature">
+        
+        def <strong>vowel?</strong> : Bool
+
+        <a class="method-permalink" href="#vowel%3F%3ABool-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns if this Char is a vowel.</p></div>
+      
+      <br/>
+      <div>
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>
