@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta id="repository-name" content="github.com/r00ster91/melon">
+  <link href="../css/style.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="../js/doc.js"></script>
+  <title>Melon::Screen - github.com/r00ster91/melon</title>
+</head>
+<body>
+
+<div id="types-list">
+  <div id="search-box">
+    <input type="search" id="search-input" placeholder="Search...">
+  </div>
+
+  <ul>
+    <li><a href="../index.html">README</a></li>
+  </ul>
+
+  <ul>
+  
+  <li class=" " data-id="github.com/r00ster91/melon/Char" data-name="char">
+      <a href="../Char.html">Char</a>
+      
+    </li>
+  
+  <li class="parent open current" data-id="github.com/r00ster91/melon/Melon" data-name="melon">
+      <a href="../Melon.html">Melon</a>
+      
+        <ul>
+  
+  <li class=" " data-id="github.com/r00ster91/melon/Melon/Cursor" data-name="melon::cursor">
+      <a href="../Melon/Cursor.html">Cursor</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/r00ster91/melon/Melon/InvalidSelectionType" data-name="melon::invalidselectiontype">
+      <a href="../Melon/InvalidSelectionType.html">InvalidSelectionType</a>
+      
+    </li>
+  
+  <li class=" current" data-id="github.com/r00ster91/melon/Melon/Screen" data-name="melon::screen">
+      <a href="../Melon/Screen.html">Screen</a>
+      
+    </li>
+  
+</ul>
+
+      
+    </li>
+  
+  <li class=" " data-id="github.com/r00ster91/melon/String" data-name="string">
+      <a href="../String.html">String</a>
+      
+    </li>
+  
+  <li class=" " data-id="github.com/r00ster91/melon/System" data-name="system">
+      <a href="../System.html">System</a>
+      
+    </li>
+  
+</ul>
+
+</div>
+
+<div id="main-content">
+<h1 class="type-name">
+
+  <span class="kind">module</span> Melon::Screen
+
+</h1>
+
+
+
+
+
+  <h2>Overview</h2>
+
+  <p>This module provides methods to control the terminal screen.</p>
+
+
+
+
+
+
+
+  <h2>Extended Modules</h2>
+  <ul class="other-types-list">
+  
+    <li class="other-type"><a href="../Melon/Screen.html">Melon::Screen</a></li>
+  
+  </ul>
+
+
+
+
+
+
+
+
+  <h2>Defined in:</h2>
+  
+    
+      <a href="https://github.com/r00ster91/melon/blob/9b07be9fad5ff76f6ff60b2785625654e68ebfc2/src/melon.cr#L127" target="_blank">melon.cr</a>
+    
+    <br/>
+  
+
+
+
+
+
+
+
+
+
+  <h2>Instance Method Summary</h2>
+  <ul class="list-summary">
+    
+      <li class="entry-summary">
+        <a href="#clear-instance-method" class="signature"><strong>#clear</strong></a>
+        
+          <div class="summary"><p>Clears the whole screen.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#clear_line-instance-method" class="signature"><strong>#clear_line</strong></a>
+        
+          <div class="summary"><p>Clears the current line, the cursor is in.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scroll_down%28lines%29-instance-method" class="signature"><strong>#scroll_down</strong>(lines)</a>
+        
+          <div class="summary"><p>Scrolls <em>lines</em> down.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#scroll_up%28lines%29-instance-method" class="signature"><strong>#scroll_up</strong>(lines)</a>
+        
+          <div class="summary"><p>Scrolls <em>lines</em> up.</p></div>
+        
+      </li>
+    
+  </ul>
+
+
+
+
+
+<div class="methods-inherited">
+  
+</div>
+
+
+
+
+
+
+  <h2>Instance Method Detail</h2>
+  
+    <div class="entry-detail" id="clear-instance-method">
+      <div class="signature">
+        
+        def <strong>clear</strong>
+
+        <a class="method-permalink" href="#clear-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Clears the whole screen.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/r00ster91/melon/blob/9b07be9fad5ff76f6ff60b2785625654e68ebfc2/src/melon.cr#L131" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="clear_line-instance-method">
+      <div class="signature">
+        
+        def <strong>clear_line</strong>
+
+        <a class="method-permalink" href="#clear_line-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Clears the current line, the cursor is in.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/r00ster91/melon/blob/9b07be9fad5ff76f6ff60b2785625654e68ebfc2/src/melon.cr#L136" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scroll_down(lines)-instance-method">
+      <div class="signature">
+        
+        def <strong>scroll_down</strong>(lines)
+
+        <a class="method-permalink" href="#scroll_down%28lines%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Scrolls <em>lines</em> down.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/r00ster91/melon/blob/9b07be9fad5ff76f6ff60b2785625654e68ebfc2/src/melon.cr#L146" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="scroll_up(lines)-instance-method">
+      <div class="signature">
+        
+        def <strong>scroll_up</strong>(lines)
+
+        <a class="method-permalink" href="#scroll_up%28lines%29-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Scrolls <em>lines</em> up.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/r00ster91/melon/blob/9b07be9fad5ff76f6ff60b2785625654e68ebfc2/src/melon.cr#L141" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+
+
+
+
+</div>
+
+</body>
+</html>

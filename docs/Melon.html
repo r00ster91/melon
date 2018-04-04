@@ -35,13 +35,13 @@
       
     </li>
   
-  <li class=" " data-id="github.com/r00ster91/melon/Melon/Screen" data-name="melon::screen">
-      <a href="Melon/Screen.html">Screen</a>
+  <li class=" " data-id="github.com/r00ster91/melon/Melon/InvalidSelectionType" data-name="melon::invalidselectiontype">
+      <a href="Melon/InvalidSelectionType.html">InvalidSelectionType</a>
       
     </li>
   
-  <li class=" " data-id="github.com/r00ster91/melon/Melon/WIP" data-name="melon::wip">
-      <a href="Melon/WIP.html">WIP</a>
+  <li class=" " data-id="github.com/r00ster91/melon/Melon/Screen" data-name="melon::screen">
+      <a href="Melon/Screen.html">Screen</a>
       
     </li>
   
@@ -75,10 +75,6 @@
 
 
 
-  <h2>Overview</h2>
-
-  <p>The melon module.</p>
-
 
 
 
@@ -102,7 +98,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/r00ster91/melon/blob/be4708a7a7cef3598320d6533f627ace8e1aee7e/src/melon.cr#L4" target="_blank">melon.cr</a>
+      <a href="https://github.com/r00ster91/melon/blob/9b07be9fad5ff76f6ff60b2785625654e68ebfc2/src/melon.cr#L3" target="_blank">melon.cr</a>
     
     <br/>
   
@@ -115,7 +111,7 @@
   <dl>
     
       <dt class="entry-const" id="VERSION">
-        <strong>VERSION</strong> = <code><span class="s">&quot;0.9.8&quot;</span></code>
+        <strong>VERSION</strong> = <code><span class="s">&quot;1.0.0&quot;</span></code>
       </dt>
       
     
@@ -145,21 +141,21 @@
       </li>
     
       <li class="entry-summary">
-        <a href="#read_keypress%3AString-instance-method" class="signature"><strong>#read_keypress</strong> : String</a>
+        <a href="#read_keypress%3AString%7CSymbol-instance-method" class="signature"><strong>#read_keypress</strong> : String | Symbol</a>
+        
+          <div class="summary"><p>Same as <code><a href="Melon.html#read_keypress_raw%3AString-instance-method">#read_keypress_raw</a></code> except that this method returns the key more compact.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#read_keypress_raw%3AString-instance-method" class="signature"><strong>#read_keypress_raw</strong> : String</a>
         
           <div class="summary"><p>Waits until a key has been pressed and returns it.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#selection%28options%2Ctype%3D1%29-instance-method" class="signature"><strong>#selection</strong>(options, type = <span class="n">1</span>)</a>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#wip-instance-method" class="signature"><strong>#wip</strong></a>
-        
-          <div class="summary"><p>This method is for things that are work in progress.</p></div>
+        <a href="#selection%28options%3AArray%28String%29%2Ctype%3D1%29-instance-method" class="signature"><strong>#selection</strong>(options : Array(String), type = <span class="n">1</span>)</a>
         
       </li>
     
@@ -198,7 +194,7 @@ You can comment out code with it.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/r00ster91/melon/blob/be4708a7a7cef3598320d6533f627ace8e1aee7e/src/melon.cr#L28" target="_blank">View source</a>]
+          [<a href="https://github.com/r00ster91/melon/blob/9b07be9fad5ff76f6ff60b2785625654e68ebfc2/src/melon.cr#L15" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -216,17 +212,38 @@ You can comment out code with it.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/r00ster91/melon/blob/be4708a7a7cef3598320d6533f627ace8e1aee7e/src/melon.cr#L33" target="_blank">View source</a>]
+          [<a href="https://github.com/r00ster91/melon/blob/9b07be9fad5ff76f6ff60b2785625654e68ebfc2/src/melon.cr#L20" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="read_keypress:String-instance-method">
+    <div class="entry-detail" id="read_keypress:String|Symbol-instance-method">
       <div class="signature">
         
-        def <strong>read_keypress</strong> : <a href="String.html">String</a>
+        def <strong>read_keypress</strong> : <a href="String.html">String</a> | Symbol
 
-        <a class="method-permalink" href="#read_keypress%3AString-instance-method">#</a>
+        <a class="method-permalink" href="#read_keypress%3AString%7CSymbol-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Same as <code><a href="Melon.html#read_keypress_raw%3AString-instance-method">#read_keypress_raw</a></code> except that this method returns the key more compact.</p>
+
+<ul><li>"\t" becomes :tab</li><li>" " becomes :space</li><li>"\e" becomes :escape
+etc.</li></ul></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/r00ster91/melon/blob/9b07be9fad5ff76f6ff60b2785625654e68ebfc2/src/melon.cr#L40" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="read_keypress_raw:String-instance-method">
+      <div class="signature">
+        
+        def <strong>read_keypress_raw</strong> : <a href="String.html">String</a>
+
+        <a class="method-permalink" href="#read_keypress_raw%3AString-instance-method">#</a>
       </div>
       
         <div class="doc"><p>Waits until a key has been pressed and returns it.</p></div>
@@ -234,41 +251,23 @@ You can comment out code with it.</p>
       <br/>
       <div>
         
-          [<a href="https://github.com/r00ster91/melon/blob/be4708a7a7cef3598320d6533f627ace8e1aee7e/src/melon.cr#L41" target="_blank">View source</a>]
+          [<a href="https://github.com/r00ster91/melon/blob/9b07be9fad5ff76f6ff60b2785625654e68ebfc2/src/melon.cr#L28" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="selection(options,type=1)-instance-method">
+    <div class="entry-detail" id="selection(options:Array(String),type=1)-instance-method">
       <div class="signature">
         
-        def <strong>selection</strong>(options, type = <span class="n">1</span>)
+        def <strong>selection</strong>(options : Array(<a href="String.html">String</a>), type = <span class="n">1</span>)
 
-        <a class="method-permalink" href="#selection%28options%2Ctype%3D1%29-instance-method">#</a>
+        <a class="method-permalink" href="#selection%28options%3AArray%28String%29%2Ctype%3D1%29-instance-method">#</a>
       </div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/r00ster91/melon/blob/be4708a7a7cef3598320d6533f627ace8e1aee7e/src/melon.cr#L101" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="wip-instance-method">
-      <div class="signature">
-        
-        def <strong>wip</strong>
-
-        <a class="method-permalink" href="#wip-instance-method">#</a>
-      </div>
-      
-        <div class="doc"><p>This method is for things that are work in progress.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/r00ster91/melon/blob/be4708a7a7cef3598320d6533f627ace8e1aee7e/src/melon.cr#L17" target="_blank">View source</a>]
+          [<a href="https://github.com/r00ster91/melon/blob/9b07be9fad5ff76f6ff60b2785625654e68ebfc2/src/melon.cr#L70" target="_blank">View source</a>]
         
       </div>
     </div>
