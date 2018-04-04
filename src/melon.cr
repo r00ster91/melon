@@ -1,16 +1,19 @@
 require "colorize"
 
+# The melon module.
 module Melon
 	extend self
 
   VERSION = "0.9.8"
 
+  # The WIP Exception.
 	class WIP < Exception
 		def initialize
 		  super "Sorry but this method is work in progress"
 		end
 	end
-	# For things that are work in progress.
+
+	# This method is for things that are work in progress.
 	def wip
 		raise Melon::WIP.new
 	end
