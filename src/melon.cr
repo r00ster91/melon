@@ -309,7 +309,6 @@ class String
         word.lchop.chars.each do |char|
           io << (char.uppercase? ? 'O' : 'o')
         end
-        io << ' '
       end
     end
   end
@@ -321,3 +320,5 @@ struct Char
     "aeiou".includes? self.downcase
   end
 end
+
+p "hello cow".to_cow_speech 

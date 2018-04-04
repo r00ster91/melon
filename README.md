@@ -20,20 +20,21 @@ require "melon"
 "kayak".palindrome? # => true
 "hello".to_binary # => ["01101000", "01100101", "01101100", "01101100", "01101111"]
 "aVeryVeryGoodPassword567182".password_strength # => 5
+'e' * 5 # => eeeee
 
 loop do
-	case Melon.read_keypress
-	when "w"
-		Melon::Cursor.move_up
-	when "s"
-		Melon::Cursor.move_down
-	when "a"
-		Melon::Cursor.move_right
-	when "d"
-		Melon::Cursor.move_left
-	when " "
-		break
-	end
+  case Melon.read_keypress
+  when "w", :up
+    Melon::Cursor.move_up
+  when "s", :down
+    Melon::Cursor.move_down
+  when "a", :left
+    Melon::Cursor.move_right
+  when "d", :right
+    Melon::Cursor.move_left
+  when :enter, :space
+    break
+  end
 end
 ```
 
