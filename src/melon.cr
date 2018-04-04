@@ -1,140 +1,28 @@
+require "colorize"
+
 module Melon
-  VERSION = "0.9.3"
+  VERSION = "0.9.8"
 
 	class WIP < Exception
 		def initialize
 		  super "Sorry but this method is work in progress"
 		end
 	end
-end
-
-# Use this in methods that are work in progress.
-def wip
-	raise Melon::WIP.new
-end
-
-require "colorize"
-
-# This is a multiline comment.
-# You can easily comment out code with it.
-# ```
-# m {
-#	  # code you don't want to run
-# }
-# ```
-def m
-	yield if false
-end
-
-# Prints each char of *string* with a delay to STDOUT.
-def printd(string : String, delay : Number = 0.05)
-	string.each_char do |char|
-		print char
-		sleep delay
+	# For things that are work in progress.
+	def wip
+		raise Melon::WIP.new
 	end
-end
 
-module Random
-	# Generates a random `String`.
-  #
-  # ```
-  # Random.new.next_string(5) # => 1hjg8
+	# This is some kind of a multiline comment.
+	# You can comment out code with it.
 	# ```
-	def next_string(length : Int) : String
-		String.build do |io|
-			length.times {io << rand(256).chr}
-		end
-	end
-end
-
-module System
-	extend self
-
-	# Returns the operating system of the system.
-	def os : Symbol
-		{% if flag?(:win32) %}
-			:win32
-		{% elsif flag?(:macos) %}
-			:macos
-		{% elsif flag?(:openbsd) %}
-			:openbsd
-		{% elsif flag?(:freebsd) %}
-			:freebsd
-		{% elsif flag?(:darwin) %}
-			:darwin
-		{% elsif flag?(:linux) %}
-			:linux
-		{% else %}
-			:unknown
-		{% end %}
-	end
-
-	# Returns the architecture of the system.
-	def architecture : Int32 | Symbol
-		{% if flag?(:x86_64) %}
-			64
-		{% elsif flag?(:i686) %}
-			32
-		{% else %}
-			:unknown
-		{% end %}
-	end
-end
-
-module Cursor
-	extend self
-
-	# Shows or hides the cursor.
-	#
+	# m {
+	#   # code you don't want to run
+	# }
 	# ```
-	# Cursor.visible = false # The cursor is invisible now.
-	# ```
-  def visible=(visible : Bool)
-  	print (visible ? "\e[?25h" : "\e[?25l")
-  end
-
-  def move_up(cells = 1)
-  	print "\e[#{cells}A"
-  end
-  def move_down(cells = 1)
-  	print "\e[#{cells}B"
-  end
-  def move_forward(cells = 1)
-  	print "\e[#{cells}C"
-  end
-  def move_back(cells = 1)
-  	print "\e[#{cells}D"
-  end
-
-  def set_position(row, column)
-  	print "\e[#{row};#{column}H"
-  end
-  def get_position
-  	wip
-  	#"\033[6n"
-  end
-end
-
-module Screen
-	extend self
-
-	# Clears the whole screen.
-  def clear
-    print "\e[3J"
-  end
-  # Clears the current line, the cursor is in.
-  def clear_line
-    print "\e[2K"
-  end
-
-  # Scrolls *lines* up.
-  def scroll_up(lines)
-  	print "\e[#{lines}S"
-  end
-  # Scrolls *lines* down.
-  def scroll_down(lines)
-  	print "\e[#{lines}T"
-  end
+	def m
+		yield if false
+	end
 
   # Waits until a key has been pressed and returns it.
   def read_keypress : String
@@ -144,7 +32,59 @@ module Screen
     end
   end
 
-  def selection(options, type = 1)
+	module Screen
+		extend self
+
+		# Clears the whole screen.
+	  def clear
+	    print "\e[3J"
+	  end
+	  # Clears the current line, the cursor is in.
+	  def clear_line
+	    print "\e[2K"
+	  end
+
+	  # Scrolls *lines* up.
+	  def scroll_up(lines)
+	  	print "\e[#{lines}S"
+	  end
+	  # Scrolls *lines* down.
+	  def scroll_down(lines)
+	  	print "\e[#{lines}T"
+	  end
+	end
+
+	module Cursor
+		extend self
+
+		# Shows or hides the cursor.
+		#
+		# ```
+		# Cursor.visible = false # The cursor is invisible now.
+		# ```
+	  def visible=(visible : Bool)
+	  	print (visible ? "\e[?25h" : "\e[?25l")
+	  end
+
+	  def move_up(cells = 1)
+	  	print "\e[#{cells}A"
+	  end
+	  def move_down(cells = 1)
+	  	print "\e[#{cells}B"
+	  end
+	  def move_forward(cells = 1)
+	  	print "\e[#{cells}C"
+	  end
+	  def move_back(cells = 1)
+	  	print "\e[#{cells}D"
+	  end
+
+	  def set_position(row, column)
+	  	print "\e[#{row};#{column}H"
+	  end
+	end
+
+	def selection(options, type = 1)
   	selected = 0
   	options_size = options.size-1
   	putted = false
@@ -197,6 +137,48 @@ module Screen
   end
 end
 
+# Prints each char of *string* with a delay to STDOUT.
+def printd(string : String, delay : Number = 0.05)
+	string.each_char do |char|
+		print char
+		sleep delay
+	end
+end
+
+module System
+	extend self
+
+	# Returns the operating system of the computer.
+	def os : Symbol
+		{% if flag?(:win32) %}
+			:win32
+		{% elsif flag?(:macos) %}
+			:macos
+		{% elsif flag?(:openbsd) %}
+			:openbsd
+		{% elsif flag?(:freebsd) %}
+			:freebsd
+		{% elsif flag?(:darwin) %}
+			:darwin
+		{% elsif flag?(:linux) %}
+			:linux
+		{% else %}
+			:unknown
+		{% end %}
+	end
+
+	# Returns the architecture of the computer.
+	def architecture : Int32 | Symbol
+		{% if flag?(:x86_64) %}
+			64
+		{% elsif flag?(:i686) %}
+			32
+		{% else %}
+			:unknown
+		{% end %}
+	end
+end
+
 struct Char
 	def *(other : Int)
 		self.to_s*other
@@ -214,28 +196,28 @@ class String
 		self.count(other)
 	end
 
-	# Returns if this String is a palindrome.
+	# Returns `true` if this String is a palindrome.
 	def palindrome? : Bool
 		self[0..-(self.size/2+1)]==self[self.size/2..-1].reverse
 	end
 
-	# Returns if this String is a valid username.
+	# Returns `true` if this String is a valid username.
 	def username? : Bool
 		/[A-Za-z0-9_]/.match(self)!=nil
 	end
 
-	# Returns if this String is a valid E-Mail.
+	# Returns `true` if this String is a valid E-Mail.
 	# But it doesn't checks if this E-Mail exists.
 	def email? : Bool
 		/\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/.match(self)!=nil
 	end
 
 	# Returns the password strength of this String.
-	# 5 = very good
-	# 4 = good
-	# 3 = acceptable
-	# 2 = bad
-	# 1 = not acceptable
+	# - 5 = very good
+	# - 4 = good
+	# - 3 = acceptable
+	# - 2 = bad
+	# - 1 = not acceptable
 	def password_strength : Int32
 		strength = 0
 
@@ -267,6 +249,7 @@ class String
 					io << ((byte&128)==0 ? 0 : 1)
 					byte <<= 1
 				end
+				io << ' '
 			end
 		end
 	end
@@ -293,13 +276,7 @@ struct Char
 	end
 end
 
-#TESTING:
-#puts "lol was"/"was"
-puts '1'*5
-puts 'k'*10
-p "lol".palindrome?
-p "kayyak".palindrome?
-p "milk".palindrome?
-puts System.os
-puts System.architecture
-Screen.scroll_down(10)
+p "kayak".palindrome? # => true
+p "hello".to_binary # => "0110100001100101011011000110110001101111"
+
+p "aVeryVeryGoodPassword567182".password_strength
