@@ -2,6 +2,8 @@
 
 A toolbox with useful methods and other stuff.
 
+[![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](https://r00ster91.github.io/melon/)
+
 ## Installation
 
 Add this to your application's `shard.yml`:

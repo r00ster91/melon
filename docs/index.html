@@ -69,6 +69,8 @@
 
 <p>A toolbox with useful methods and other stuff.</p>
 
+<p><a href="https://r00ster91.github.io/melon/" target="_blank"><img src="https://img.shields.io/badge/docs-available-brightgreen.svg" alt="Docs"/></a></p>
+
 <h2>Installation</h2>
 
 <p>Add this to your application's <code>shard.yml</code>:</p>
@@ -84,20 +86,21 @@
 "kayak".palindrome? # => true
 "hello".to_binary # => ["01101000", "01100101", "01101100", "01101100", "01101111"]
 "aVeryVeryGoodPassword567182".password_strength # => 5
+'e' * 5 # => eeeee
 
 loop do
-	case Melon.read_keypress
-	when "w"
-		Melon::Cursor.move_up
-	when "s"
-		Melon::Cursor.move_down
-	when "a"
-		Melon::Cursor.move_right
-	when "d"
-		Melon::Cursor.move_left
-	when " "
-		break
-	end
+  case Melon.read_keypress
+  when "w", :up
+    Melon::Cursor.move_up
+  when "s", :down
+    Melon::Cursor.move_down
+  when "a", :left
+    Melon::Cursor.move_right
+  when "d", :right
+    Melon::Cursor.move_left
+  when :enter, :space
+    break
+  end
 end</code></pre>
 
 <h2>Contributing</h2>
