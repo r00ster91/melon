@@ -20,11 +20,6 @@
 
   <ul>
   
-  <li class=" " data-id="github.com/r00ster91/melon/toplevel" data-name="top level namespace">
-      <a href="toplevel.html">Top Level Namespace</a>
-      
-    </li>
-  
   <li class=" " data-id="github.com/r00ster91/melon/Char" data-name="char">
       <a href="Char.html">Char</a>
       
@@ -84,17 +79,30 @@
 
 <h2>Usage</h2>
 
-<pre><code class='language-crystal'><span class="k">require</span> <span class="s">&quot;melon&quot;</span></code></pre>
+<pre><code class='language-Crystal'>require "melon"
 
-<p><span class="flag orange">TODO</span>  Write usage instructions here</p>
+"kayak".palindrome? # => true
+"hello".to_binary # => ["01101000", "01100101", "01101100", "01101100", "01101111"]
+"aVeryVeryGoodPassword567182".password_strength # => 5
 
-<h2>Development</h2>
-
-<p><span class="flag orange">TODO</span>  Write development instructions here</p>
+loop do
+	case Melon.read_keypress
+	when "w"
+		Melon::Cursor.move_up
+	when "s"
+		Melon::Cursor.move_down
+	when "a"
+		Melon::Cursor.move_right
+	when "d"
+		Melon::Cursor.move_left
+	when " "
+		break
+	end
+end</code></pre>
 
 <h2>Contributing</h2>
 
-<ol><li>Fork it ( https://github.com/r00ster91/melon/fork )</li><li>Create your feature branch (git checkout -b my-new-feature)</li><li>Commit your changes (git commit -am 'Add some feature')</li><li>Push to the branch (git push origin my-new-feature)</li><li>Create a new Pull Request</li></ol>
+<ol><li>Fork it (https://github.com/r00ster91/melon/fork)</li><li>Create your feature branch (git checkout -b my-new-feature)</li><li>Commit your changes (git commit -am 'Add some feature')</li><li>Push to the branch (git push origin my-new-feature)</li><li>Create a new Pull Request</li></ol>
 
 <h2>Contributors</h2>
 

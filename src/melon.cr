@@ -1,6 +1,8 @@
 require "colorize"
 
 module Melon
+	extend self
+
   VERSION = "0.9.8"
 
 	class WIP < Exception
@@ -24,6 +26,14 @@ module Melon
 		yield if false
 	end
 
+	# Prints each char of *string* with a delay to STDOUT.
+	def printd(string : String, delay : Number = 0.05)
+		string.each_char do |char|
+			print char
+			sleep delay
+		end
+	end
+
   # Waits until a key has been pressed and returns it.
   def read_keypress : String
     STDIN.raw do |io|
@@ -32,6 +42,7 @@ module Melon
     end
   end
 
+  # This module provides methods to control the terminal screen.
 	module Screen
 		extend self
 
@@ -54,11 +65,11 @@ module Melon
 	  end
 	end
 
+	# This module provides methods to control the terminal cursor.
 	module Cursor
 		extend self
 
 		# Shows or hides the cursor.
-		#
 		# ```
 		# Cursor.visible = false # The cursor is invisible now.
 		# ```
@@ -72,11 +83,11 @@ module Melon
 	  def move_down(cells = 1)
 	  	print "\e[#{cells}B"
 	  end
-	  def move_forward(cells = 1)
-	  	print "\e[#{cells}C"
-	  end
-	  def move_back(cells = 1)
+	  def move_right(cells = 1)
 	  	print "\e[#{cells}D"
+	  end
+	  def move_left(cells = 1)
+	  	print "\e[#{cells}C"
 	  end
 
 	  def set_position(row, column)
@@ -135,14 +146,6 @@ module Melon
 			end
 		end
   end
-end
-
-# Prints each char of *string* with a delay to STDOUT.
-def printd(string : String, delay : Number = 0.05)
-	string.each_char do |char|
-		print char
-		sleep delay
-	end
 end
 
 module System
@@ -242,16 +245,17 @@ class String
 	end
 
 	# Converts this String to binary.
-	def to_binary : String
-		String.build do |io|
-			self.bytes.each do |byte|
+	def to_binary : Array(String)
+		binary = [] of String
+		self.bytes.each do |byte|
+			binary << (String.build do |io|
 				8.times do
 					io << ((byte&128)==0 ? 0 : 1)
 					byte <<= 1
 				end
-				io << ' '
-			end
+			end)
 		end
+		binary
 	end
 
 	# Converts this String to cow speech.
@@ -270,13 +274,8 @@ class String
 end
 
 struct Char
-	# Returns if this Char is a vowel.
+	# Returns `true` if this Char is a vowel.
 	def vowel? : Bool
 		"aeiou".includes? self.downcase
 	end
 end
-
-p "kayak".palindrome? # => true
-p "hello".to_binary # => "0110100001100101011011000110110001101111"
-
-p "aVeryVeryGoodPassword567182".password_strength
