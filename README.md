@@ -40,6 +40,8 @@ loop do
 end
 ```
 
+[Visit the docs](https://r00ster91.github.io/melon/) for more information about what you can do with Melon.
+
 ## Contributing
 
 1. [Fork it](https://github.com/r00ster91/melon/fork)
