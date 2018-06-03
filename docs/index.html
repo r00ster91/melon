@@ -25,28 +25,28 @@
       
     </li>
   
+  <li class=" " data-id="github.com/r00ster91/melon/Cursor" data-name="cursor">
+      <a href="Cursor.html">Cursor</a>
+      
+    </li>
+  
   <li class="parent " data-id="github.com/r00ster91/melon/Melon" data-name="melon">
       <a href="Melon.html">Melon</a>
       
         <ul>
   
-  <li class=" " data-id="github.com/r00ster91/melon/Melon/Cursor" data-name="melon::cursor">
-      <a href="Melon/Cursor.html">Cursor</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/r00ster91/melon/Melon/InvalidSelectionType" data-name="melon::invalidselectiontype">
-      <a href="Melon/InvalidSelectionType.html">InvalidSelectionType</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/r00ster91/melon/Melon/Screen" data-name="melon::screen">
-      <a href="Melon/Screen.html">Screen</a>
+  <li class=" " data-id="github.com/r00ster91/melon/Melon/Error" data-name="melon::error">
+      <a href="Melon/Error.html">Error</a>
       
     </li>
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="github.com/r00ster91/melon/Screen" data-name="screen">
+      <a href="Screen.html">Screen</a>
       
     </li>
   
@@ -67,9 +67,17 @@
 <div id="main-content">
 <h1>Melon</h1>
 
+<p><a href="https://r00ster91.github.io/melon/" target="_blank"><img src="https://img.shields.io/badge/docs-available-brightgreen.svg" alt="Docs"/></a></p>
+
 <p>A toolbox with useful methods and other stuff.</p>
 
-<p><a href="https://r00ster91.github.io/melon/" target="_blank"><img src="https://img.shields.io/badge/docs-available-brightgreen.svg" alt="Docs"/></a></p>
+<p>It adds the following modules:</p>
+
+<ul><li><strong>Melon</strong>  Has read_keypress_raw, read_keypress, selection</li><li><strong>Screen</strong> Methods for getting the screen width, height, clearing the screen etc.</li><li><strong>Cursor</strong> Methods for setting the cursor position, making the cursor invisible etc.</li></ul>
+
+<p>And extends the following modules/structs/classes:</p>
+
+<ul><li><strong>System</strong> Adds operating_system, architecture, username</li><li><strong>String</strong> Various methods like email?, palindrome?, to_binary and more</li><li><strong>Char</strong> Adds vowel?, *</li></ul>
 
 <h2>Installation</h2>
 
@@ -83,25 +91,36 @@
 
 <pre><code class='language-Crystal'>require "melon"
 
-"kayak".palindrome? # => true
 "hello".to_binary # => ["01101000", "01100101", "01101100", "01101100", "01101111"]
-"aVeryVeryGoodPassword567182".password_strength # => 5
-'e' * 5 # => eeeee
+"A_very_good_password567182".password_strength # => 5
+"kayak".palindrome? # => true
+"melon@melon.com".email? # => true
 
 loop do
   case Melon.read_keypress
   when "w", :up
-    Melon::Cursor.move_up
+    Cursor.move_up
   when "s", :down
-    Melon::Cursor.move_down
+    Cursor.move_down
   when "a", :left
-    Melon::Cursor.move_right
+    Cursor.move_right
   when "d", :right
-    Melon::Cursor.move_left
+    Cursor.move_left
   when :enter, :space
     break
   end
-end</code></pre>
+end
+
+# Here we comment out code that we don't want to run:
+m {
+  io = IO::Memory.new
+
+  ("Hello world" / 'l').times do
+    io &lt;&lt; (rand(50..175).chr.vowel? ? '1' : '0')
+  end
+
+  puts io
+}</code></pre>
 
 <p><a href="https://r00ster91.github.io/melon/" target="_blank">Visit the docs</a> for more information about what you can do with Melon.</p>
 

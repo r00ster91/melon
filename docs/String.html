@@ -25,28 +25,28 @@
       
     </li>
   
+  <li class=" " data-id="github.com/r00ster91/melon/Cursor" data-name="cursor">
+      <a href="Cursor.html">Cursor</a>
+      
+    </li>
+  
   <li class="parent " data-id="github.com/r00ster91/melon/Melon" data-name="melon">
       <a href="Melon.html">Melon</a>
       
         <ul>
   
-  <li class=" " data-id="github.com/r00ster91/melon/Melon/Cursor" data-name="melon::cursor">
-      <a href="Melon/Cursor.html">Cursor</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/r00ster91/melon/Melon/InvalidSelectionType" data-name="melon::invalidselectiontype">
-      <a href="Melon/InvalidSelectionType.html">InvalidSelectionType</a>
-      
-    </li>
-  
-  <li class=" " data-id="github.com/r00ster91/melon/Melon/Screen" data-name="melon::screen">
-      <a href="Melon/Screen.html">Screen</a>
+  <li class=" " data-id="github.com/r00ster91/melon/Melon/Error" data-name="melon::error">
+      <a href="Melon/Error.html">Error</a>
       
     </li>
   
 </ul>
 
+      
+    </li>
+  
+  <li class=" " data-id="github.com/r00ster91/melon/Screen" data-name="screen">
+      <a href="Screen.html">Screen</a>
       
     </li>
   
@@ -209,7 +209,7 @@ show a replacement character when there's an error in incoming data.</p>
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/r00ster91/melon/blob/798f1ea4ab6343f8ceae42ca8bccddea5d8f533c/src/melon.cr#L233" target="_blank">melon.cr</a>
+      <a href="https://github.com/r00ster91/melon/blob/24c7d7f6c22d037b7dab5d7473604fc1f6ed82de/src/melon.cr#L237" target="_blank">melon.cr</a>
     
     <br/>
   
@@ -226,16 +226,16 @@ show a replacement character when there's an error in incoming data.</p>
   <ul class="list-summary">
     
       <li class="entry-summary">
-        <a href="#-%28other%3AString%29%3AString-instance-method" class="signature"><strong>#-</strong>(other : String) : String</a>
+        <a href="#-%28char%3AChar%29%3AString-instance-method" class="signature"><strong>#-</strong>(char : Char) : String</a>
         
-          <div class="summary"><p>Returns a new <code><a href="String.html">String</a></code> with all occurrences of <em>other</em> removed.</p></div>
+          <div class="summary"><p>Returns a new string with all occurrences of <em>other</em> removed.</p></div>
         
       </li>
     
       <li class="entry-summary">
-        <a href="#%2F%28other%3AString%29%3AInt-instance-method" class="signature"><strong>#/</strong>(other : String) : Int</a>
+        <a href="#%2F%28other%3AChar%29%3AInt32-instance-method" class="signature"><strong>#/</strong>(other : Char) : Int32</a>
         
-          <div class="summary"><p>Counts the occurrences of <em>other</em> in this String.</p></div>
+          <div class="summary"><p>Counts the occurrences of <em>other</em> in this string.</p></div>
         
       </li>
     
@@ -249,35 +249,28 @@ show a replacement character when there's an error in incoming data.</p>
       <li class="entry-summary">
         <a href="#palindrome%3F%3ABool-instance-method" class="signature"><strong>#palindrome?</strong> : Bool</a>
         
-          <div class="summary"><p>Returns <code>true</code> if this String is a palindrome.</p></div>
+          <div class="summary"><p>Returns <code>true</code> if this string is a palindrome.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#password_strength%3AInt32-instance-method" class="signature"><strong>#password_strength</strong> : Int32</a>
         
-          <div class="summary"><p>Returns the password strength of this String.</p></div>
+          <div class="summary"><p>Returns the password strength of this string.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#to_binary%3AArray%28String%29-instance-method" class="signature"><strong>#to_binary</strong> : Array(String)</a>
         
-          <div class="summary"><p>Converts this String to binary.</p></div>
+          <div class="summary"><p>Converts this string to binary.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#to_cow_speech%3AString-instance-method" class="signature"><strong>#to_cow_speech</strong> : String</a>
         
-          <div class="summary"><p>Converts this String to cow speech.</p></div>
-        
-      </li>
-    
-      <li class="entry-summary">
-        <a href="#username%3F%3ABool-instance-method" class="signature"><strong>#username?</strong> : Bool</a>
-        
-          <div class="summary"><p>Returns <code>true</code> if this String is a valid username.</p></div>
+          <div class="summary"><p>Converts this string to cow speech.</p></div>
         
       </li>
     
@@ -328,38 +321,38 @@ show a replacement character when there's an error in incoming data.</p>
 
   <h2>Instance Method Detail</h2>
   
-    <div class="entry-detail" id="-(other:String):String-instance-method">
+    <div class="entry-detail" id="-(char:Char):String-instance-method">
       <div class="signature">
         
-        def <strong>-</strong>(other : <a href="String.html">String</a>) : <a href="String.html">String</a>
+        def <strong>-</strong>(char : <a href="Char.html">Char</a>) : <a href="String.html">String</a>
 
-        <a class="method-permalink" href="#-%28other%3AString%29%3AString-instance-method">#</a>
+        <a class="method-permalink" href="#-%28char%3AChar%29%3AString-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Returns a new <code><a href="String.html">String</a></code> with all occurrences of <em>other</em> removed.</p></div>
+        <div class="doc"><p>Returns a new string with all occurrences of <em>other</em> removed.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/r00ster91/melon/blob/798f1ea4ab6343f8ceae42ca8bccddea5d8f533c/src/melon.cr#L235" target="_blank">View source</a>]
+          [<a href="https://github.com/r00ster91/melon/blob/24c7d7f6c22d037b7dab5d7473604fc1f6ed82de/src/melon.cr#L239" target="_blank">View source</a>]
         
       </div>
     </div>
   
-    <div class="entry-detail" id="/(other:String):Int-instance-method">
+    <div class="entry-detail" id="/(other:Char):Int32-instance-method">
       <div class="signature">
         
-        def <strong>/</strong>(other : <a href="String.html">String</a>) : Int
+        def <strong>/</strong>(other : <a href="Char.html">Char</a>) : Int32
 
-        <a class="method-permalink" href="#%2F%28other%3AString%29%3AInt-instance-method">#</a>
+        <a class="method-permalink" href="#%2F%28other%3AChar%29%3AInt32-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Counts the occurrences of <em>other</em> in this String.</p></div>
+        <div class="doc"><p>Counts the occurrences of <em>other</em> in this string.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/r00ster91/melon/blob/798f1ea4ab6343f8ceae42ca8bccddea5d8f533c/src/melon.cr#L240" target="_blank">View source</a>]
+          [<a href="https://github.com/r00ster91/melon/blob/24c7d7f6c22d037b7dab5d7473604fc1f6ed82de/src/melon.cr#L244" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -378,7 +371,7 @@ But it doesn't checks if this E-Mail exists.</p></div>
       <br/>
       <div>
         
-          [<a href="https://github.com/r00ster91/melon/blob/798f1ea4ab6343f8ceae42ca8bccddea5d8f533c/src/melon.cr#L256" target="_blank">View source</a>]
+          [<a href="https://github.com/r00ster91/melon/blob/24c7d7f6c22d037b7dab5d7473604fc1f6ed82de/src/melon.cr#L255" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -391,12 +384,12 @@ But it doesn't checks if this E-Mail exists.</p></div>
         <a class="method-permalink" href="#palindrome%3F%3ABool-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Returns <code>true</code> if this String is a palindrome.</p></div>
+        <div class="doc"><p>Returns <code>true</code> if this string is a palindrome.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/r00ster91/melon/blob/798f1ea4ab6343f8ceae42ca8bccddea5d8f533c/src/melon.cr#L245" target="_blank">View source</a>]
+          [<a href="https://github.com/r00ster91/melon/blob/24c7d7f6c22d037b7dab5d7473604fc1f6ed82de/src/melon.cr#L249" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -409,14 +402,14 @@ But it doesn't checks if this E-Mail exists.</p></div>
         <a class="method-permalink" href="#password_strength%3AInt32-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Returns the password strength of this String.</p>
+        <div class="doc"><p>Returns the password strength of this string.</p>
 
 <ul><li>5 = very good</li><li>4 = good</li><li>3 = acceptable</li><li>2 = bad</li><li>1 = not acceptable</li></ul></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/r00ster91/melon/blob/798f1ea4ab6343f8ceae42ca8bccddea5d8f533c/src/melon.cr#L266" target="_blank">View source</a>]
+          [<a href="https://github.com/r00ster91/melon/blob/24c7d7f6c22d037b7dab5d7473604fc1f6ed82de/src/melon.cr#L265" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -429,12 +422,12 @@ But it doesn't checks if this E-Mail exists.</p></div>
         <a class="method-permalink" href="#to_binary%3AArray%28String%29-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Converts this String to binary.</p></div>
+        <div class="doc"><p>Converts this string to binary.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/r00ster91/melon/blob/798f1ea4ab6343f8ceae42ca8bccddea5d8f533c/src/melon.cr#L290" target="_blank">View source</a>]
+          [<a href="https://github.com/r00ster91/melon/blob/24c7d7f6c22d037b7dab5d7473604fc1f6ed82de/src/melon.cr#L290" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -447,31 +440,13 @@ But it doesn't checks if this E-Mail exists.</p></div>
         <a class="method-permalink" href="#to_cow_speech%3AString-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Converts this String to cow speech.
+        <div class="doc"><p>Converts this string to cow speech.
 This method allows you to communicate with cows.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/r00ster91/melon/blob/798f1ea4ab6343f8ceae42ca8bccddea5d8f533c/src/melon.cr#L305" target="_blank">View source</a>]
-        
-      </div>
-    </div>
-  
-    <div class="entry-detail" id="username?:Bool-instance-method">
-      <div class="signature">
-        
-        def <strong>username?</strong> : Bool
-
-        <a class="method-permalink" href="#username%3F%3ABool-instance-method">#</a>
-      </div>
-      
-        <div class="doc"><p>Returns <code>true</code> if this String is a valid username.</p></div>
-      
-      <br/>
-      <div>
-        
-          [<a href="https://github.com/r00ster91/melon/blob/798f1ea4ab6343f8ceae42ca8bccddea5d8f533c/src/melon.cr#L250" target="_blank">View source</a>]
+          [<a href="https://github.com/r00ster91/melon/blob/24c7d7f6c22d037b7dab5d7473604fc1f6ed82de/src/melon.cr#L305" target="_blank">View source</a>]
         
       </div>
     </div>

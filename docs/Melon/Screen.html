@@ -35,8 +35,8 @@
       
     </li>
   
-  <li class=" " data-id="github.com/r00ster91/melon/Melon/InvalidSelectionType" data-name="melon::invalidselectiontype">
-      <a href="../Melon/InvalidSelectionType.html">InvalidSelectionType</a>
+  <li class=" " data-id="github.com/r00ster91/melon/Melon/Error" data-name="melon::error">
+      <a href="../Melon/Error.html">Error</a>
       
     </li>
   
@@ -75,10 +75,6 @@
 
 
 
-  <h2>Overview</h2>
-
-  <p>This module provides methods to control the terminal screen.</p>
-
 
 
 
@@ -102,7 +98,7 @@
   <h2>Defined in:</h2>
   
     
-      <a href="https://github.com/r00ster91/melon/blob/798f1ea4ab6343f8ceae42ca8bccddea5d8f533c/src/melon.cr#L127" target="_blank">melon.cr</a>
+      <a href="https://github.com/r00ster91/melon/blob/24c7d7f6c22d037b7dab5d7473604fc1f6ed82de/src/melon.cr#L120" target="_blank">melon.cr</a>
     
     <br/>
   
@@ -121,28 +117,42 @@
       <li class="entry-summary">
         <a href="#clear-instance-method" class="signature"><strong>#clear</strong></a>
         
-          <div class="summary"><p>Clears the whole screen.</p></div>
+          <div class="summary"><p>Clears the screen and delete all saved lines in the scrollback buffer.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#clear_line-instance-method" class="signature"><strong>#clear_line</strong></a>
         
-          <div class="summary"><p>Clears the current line, the cursor is in.</p></div>
+          <div class="summary"><p>Clears the current cells in the line, the cursor is in.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#height-instance-method" class="signature"><strong>#height</strong></a>
+        
+          <div class="summary"><p>Returns the height of the screen in cells.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#scroll_down%28lines%29-instance-method" class="signature"><strong>#scroll_down</strong>(lines)</a>
         
-          <div class="summary"><p>Scrolls <em>lines</em> down.</p></div>
+          <div class="summary"><p>Scrolls <em>lines</em> lines down.</p></div>
         
       </li>
     
       <li class="entry-summary">
         <a href="#scroll_up%28lines%29-instance-method" class="signature"><strong>#scroll_up</strong>(lines)</a>
         
-          <div class="summary"><p>Scrolls <em>lines</em> up.</p></div>
+          <div class="summary"><p>Scrolls <em>lines</em> lines up.</p></div>
+        
+      </li>
+    
+      <li class="entry-summary">
+        <a href="#width-instance-method" class="signature"><strong>#width</strong></a>
+        
+          <div class="summary"><p>Returns the width of the screen in cells.</p></div>
         
       </li>
     
@@ -171,12 +181,12 @@
         <a class="method-permalink" href="#clear-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Clears the whole screen.</p></div>
+        <div class="doc"><p>Clears the screen and delete all saved lines in the scrollback buffer.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/r00ster91/melon/blob/798f1ea4ab6343f8ceae42ca8bccddea5d8f533c/src/melon.cr#L131" target="_blank">View source</a>]
+          [<a href="https://github.com/r00ster91/melon/blob/24c7d7f6c22d037b7dab5d7473604fc1f6ed82de/src/melon.cr#L134" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -189,12 +199,30 @@
         <a class="method-permalink" href="#clear_line-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Clears the current line, the cursor is in.</p></div>
+        <div class="doc"><p>Clears the current cells in the line, the cursor is in.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/r00ster91/melon/blob/798f1ea4ab6343f8ceae42ca8bccddea5d8f533c/src/melon.cr#L136" target="_blank">View source</a>]
+          [<a href="https://github.com/r00ster91/melon/blob/24c7d7f6c22d037b7dab5d7473604fc1f6ed82de/src/melon.cr#L139" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="height-instance-method">
+      <div class="signature">
+        
+        def <strong>height</strong>
+
+        <a class="method-permalink" href="#height-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the height of the screen in cells.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/r00ster91/melon/blob/24c7d7f6c22d037b7dab5d7473604fc1f6ed82de/src/melon.cr#L129" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -207,12 +235,12 @@
         <a class="method-permalink" href="#scroll_down%28lines%29-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Scrolls <em>lines</em> down.</p></div>
+        <div class="doc"><p>Scrolls <em>lines</em> lines down.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/r00ster91/melon/blob/798f1ea4ab6343f8ceae42ca8bccddea5d8f533c/src/melon.cr#L146" target="_blank">View source</a>]
+          [<a href="https://github.com/r00ster91/melon/blob/24c7d7f6c22d037b7dab5d7473604fc1f6ed82de/src/melon.cr#L149" target="_blank">View source</a>]
         
       </div>
     </div>
@@ -225,12 +253,30 @@
         <a class="method-permalink" href="#scroll_up%28lines%29-instance-method">#</a>
       </div>
       
-        <div class="doc"><p>Scrolls <em>lines</em> up.</p></div>
+        <div class="doc"><p>Scrolls <em>lines</em> lines up.</p></div>
       
       <br/>
       <div>
         
-          [<a href="https://github.com/r00ster91/melon/blob/798f1ea4ab6343f8ceae42ca8bccddea5d8f533c/src/melon.cr#L141" target="_blank">View source</a>]
+          [<a href="https://github.com/r00ster91/melon/blob/24c7d7f6c22d037b7dab5d7473604fc1f6ed82de/src/melon.cr#L144" target="_blank">View source</a>]
+        
+      </div>
+    </div>
+  
+    <div class="entry-detail" id="width-instance-method">
+      <div class="signature">
+        
+        def <strong>width</strong>
+
+        <a class="method-permalink" href="#width-instance-method">#</a>
+      </div>
+      
+        <div class="doc"><p>Returns the width of the screen in cells.</p></div>
+      
+      <br/>
+      <div>
+        
+          [<a href="https://github.com/r00ster91/melon/blob/24c7d7f6c22d037b7dab5d7473604fc1f6ed82de/src/melon.cr#L124" target="_blank">View source</a>]
         
       </div>
     </div>

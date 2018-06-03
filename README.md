@@ -1,8 +1,18 @@
 # Melon
 
+[![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](https://r00ster91.github.io/melon/)
+
 A toolbox with useful methods and other stuff.
 
-[![Docs](https://img.shields.io/badge/docs-available-brightgreen.svg)](https://r00ster91.github.io/melon/)
+It adds the following modules:
+- **Melon**  Has read_keypress_raw, read_keypress, selection
+- **Screen** Methods for getting the screen width, height, clearing the screen etc.
+- **Cursor** Methods for setting the cursor position, making the cursor invisible etc.
+
+And extends the following modules/structs/classes:
+- **System** Adds operating_system, architecture, username
+- **String** Various methods like email?, palindrome?, to_binary and more
+- **Char** Adds vowel?, *
 
 ## Installation
 
@@ -19,25 +29,36 @@ dependencies:
 ```Crystal
 require "melon"
 
-"kayak".palindrome? # => true
 "hello".to_binary # => ["01101000", "01100101", "01101100", "01101100", "01101111"]
-"aVeryVeryGoodPassword567182".password_strength # => 5
-'e' * 5 # => eeeee
+"A_very_good_password567182".password_strength # => 5
+"kayak".palindrome? # => true
+"melon@melon.com".email? # => true
 
 loop do
   case Melon.read_keypress
   when "w", :up
-    Melon::Cursor.move_up
+    Cursor.move_up
   when "s", :down
-    Melon::Cursor.move_down
+    Cursor.move_down
   when "a", :left
-    Melon::Cursor.move_right
+    Cursor.move_right
   when "d", :right
-    Melon::Cursor.move_left
+    Cursor.move_left
   when :enter, :space
     break
   end
 end
+
+# Here we comment out code that we don't want to run:
+m {
+  io = IO::Memory.new
+
+  ("Hello world" / 'l').times do
+    io << (rand(50..175).chr.vowel? ? '1' : '0')
+  end
+
+  puts io
+}
 ```
 
 [Visit the docs](https://r00ster91.github.io/melon/) for more information about what you can do with Melon.

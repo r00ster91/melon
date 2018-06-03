@@ -1,28 +1,37 @@
 require "colorize"
 
+# This should be used to make code more readable.
+# ```
+# lightswitch = ON
+# ```
+ON = true
+
+# This should be used to make code more readable.
+# ```
+# lightswitch = OFF
+# ```
+OFF = false
+
+# This is a multiline comment.
+# You can comment out code with it. No matter what code.
+# ```
+# m {
+#   # code you don't want to run
+# }
+# ```
+macro m
+  {% if false %}
+    {{yield}}
+  {% end %}
+end
+
 module Melon
   extend self
 
+  class Error < Exception
+  end
+
   VERSION = "1.0.0"
-
-  # This is some kind of a multiline comment.
-  # You can comment out code with it.
-  # ```
-  # m {
-  #   # code you don't want to run
-  # }
-  # ```
-  def m
-    yield if false
-  end
-
-  # Prints each char of *string* with a delay to STDOUT.
-  def printd(string : String, delay : Number = 0.05)
-    string.each_char do |char|
-      print char
-      sleep delay
-    end
-  end
 
   # Waits until a key has been pressed and returns it.
   def read_keypress_raw : String
@@ -39,12 +48,12 @@ module Melon
   # etc.
   def read_keypress : String | Symbol
     case key = read_keypress_raw
+    when "\u007f", "\b"
+      :backspace
     when "\r", "\n"
       :enter
     when "\t"
       :tab
-    when " "
-      :space
     when "\e"
       :escape
     when "\e[A"
@@ -55,49 +64,34 @@ module Melon
       :right
     when "\e[D"
       :left
+    when "\u{3}"
+      exit
     else
-      key.downcase
+      key
     end
   end
 
-  # Raised when an invalid type has been specified at `selection`.
+  # Prints the options in which the user can select one using the arrow keys and W, S and confirm using the enter key.
   # ```
-  # Melon.selection(["Play", "Settings", "Quit"], 4) # raises InvalidSelectionType
+  # Melon.selection({"Play", "Options", "Exit"})
   # ```
-  class InvalidSelectionType < Exception
-  end
-
-  def selection(options : Array(String), type = 1)
-    if type != 1 || type != 2
-      raise(InvalidSelectionType.new(
-        "Selection type #{type} is invalid. Choose either 1 or 2"
-      ))
-    end
+  # ```text
+  # >Play
+  # Options
+  # Exit
+  # ```
+  def selection(options : Array | Tuple)
     selected = 0
     options_size = options.size - 1
-    putted = false
+    print "\n"*options.size
     loop do
-      if !putted
-        options.size.times { puts }
-        putted = true
-      end
       Cursor.move_up options.size
       options.each_with_index do |option, index|
-        puts(
-          if selected == index
-            if type == 1
-              ">#{option}"
-            elsif type == 2
-              option.colorize(:white)
-            end
-          else
-            if type == 1
-              "#{option} "
-            elsif type == 2
-              option.colorize(:dark_gray)
-            end
-          end
-        )
+        puts(if selected == index
+          ">#{option}"
+        else
+          "#{option} "
+        end)
       end
       loop do
         case Melon.read_keypress
@@ -122,63 +116,68 @@ module Melon
       end
     end
   end
+end
 
-  # This module provides methods to control the terminal screen.
-  module Screen
-    extend self
+module Screen
+  extend self
 
-    # Clears the whole screen.
-    def clear
-      print "\e[2J\e[3J"
-    end
-
-    # Clears the current line, the cursor is in.
-    def clear_line
-      print "\e[2K"
-    end
-
-    # Scrolls *lines* up.
-    def scroll_up(lines)
-      print "\e[#{lines}S"
-    end
-
-    # Scrolls *lines* down.
-    def scroll_down(lines)
-      print "\e[#{lines}T"
-    end
+  # Returns the width of the screen in cells.
+  def width
+    `tput cols`.to_i
   end
 
-  # This module provides methods to control the terminal cursor.
-  module Cursor
-    extend self
+  # Returns the height of the screen in cells.
+  def height
+    `tput lines`.to_i
+  end
 
-    # Shows or hides the cursor.
-    # ```
-    # Cursor.visible = false # The cursor is invisible now.
-    # ```
-    def visible=(visible : Bool)
-      print (visible ? "\e[?25h" : "\e[?25l")
-    end
+  # Clears the screen and delete all saved lines in the scrollback buffer.
+  def clear
+    print "\e[3J"
+  end
 
-    def move_up(cells = 1)
-      print "\e[#{cells}A"
-    end
+  # Clears the current cells in the line, the cursor is in.
+  def clear_line
+    print "\e[2K"
+  end
 
-    def move_down(cells = 1)
-      print "\e[#{cells}B"
-    end
+  # Scrolls *lines* lines up.
+  def scroll_up(lines)
+    print "\e[#{lines}S"
+  end
 
-    def move_right(cells = 1)
-      print "\e[#{cells}D"
-    end
+  # Scrolls *lines* lines down.
+  def scroll_down(lines)
+    print "\e[#{lines}T"
+  end
+end
 
-    def move_left(cells = 1)
-      print "\e[#{cells}C"
-    end
+module Cursor
+  extend self
 
-    def set_position(x, y)
-      print "\e[#{y};#{x}H"
-    end
+  # Shows or hides the cursor.
+  def visible=(visible : Bool)
+    print (visible ? "\e[?25h" : "\e[?25l")
+  end
+
+  def move_up(cells = 1)
+    print "\e[#{cells}A"
+  end
+
+  def move_down(cells = 1)
+    print "\e[#{cells}B"
+  end
+
+  def move_right(cells = 1)
+    print "\e[#{cells}D"
+  end
+
+  def move_left(cells = 1)
+    print "\e[#{cells}C"
+  end
+
+  def set_position(x, y)
+    print "\e[#{y};#{x}H"
   end
 end
 
@@ -205,11 +204,11 @@ module System
   end
 
   # Returns the architecture of the computer.
-  def architecture : Int32 | Symbol
-    {% if flag?(:x86_64) || flag?(:amd64) %}
-      :64bit
-    {% elsif flag?(:i686) || flag?(:i586) || flag?(:i486) || flag?(:i386) %}
-      :32bit
+  def architecture : Symbol
+    {% if flag?(:bits64) %}
+      :bits64
+    {% elsif flag?(:bits32) %}
+      :bits32
     {% elsif flag?(:arm) %}
       :arm
     {% else %}
@@ -219,45 +218,45 @@ module System
 
   # Returns the username of the current user.
   def username : String
-    `whoami`
-  end
-end
+    {% if flag?(:win32) %}
+      hostname = begin
+        `whoami`.split('\\')[1]
+      rescue
+        ""
+      end
+    {% else %}
+      hostname = `whoami`
+    {% end %}
 
-struct Char
-  # Makes a new `String` by adding this Char to itself *times* times.
-  def *(times : Int)
-    self.to_s*other
+    raise Melon::Error.new "Could not get hostname" if hostname.empty?
+
+    hostname
   end
 end
 
 class String
-  # Returns a new `String` with all occurrences of *other* removed.
-  def -(other : String) : String
-    self.delete(other)
+  # Returns a new string with all occurrences of *other* removed.
+  def -(char : Char) : String
+    self.delete(char)
   end
 
-  # Counts the occurrences of *other* in this String.
-  def /(other : String) : Int
+  # Counts the occurrences of *other* in this string.
+  def /(other : Char) : Int32
     self.count(other)
   end
 
-  # Returns `true` if this String is a palindrome.
+  # Returns `true` if this string is a palindrome.
   def palindrome? : Bool
     self[0..-(self.size/2 + 1)] == self[self.size/2..-1].reverse
-  end
-
-  # Returns `true` if this String is a valid username.
-  def username? : Bool
-    /[A-Za-z0-9_]/.match(self) != nil
   end
 
   # Returns `true` if this String is a valid E-Mail.
   # But it doesn't checks if this E-Mail exists.
   def email? : Bool
-    /\A[^@\s]+@([^@\s]+\.)+[^@\s]+\z/.match(self) != nil
+    /[^@\s]+@([^@\s]+\.)+[^@\s]+/ === self
   end
 
-  # Returns the password strength of this String.
+  # Returns the password strength of this string.
   # - 5 = very good
   # - 4 = good
   # - 3 = acceptable
@@ -267,6 +266,7 @@ class String
     strength = 0
 
     return 1 if self.size < 4
+
     if /\d/.match self
       strength += 1
     end
@@ -286,7 +286,7 @@ class String
     strength
   end
 
-  # Converts this String to binary.
+  # Converts this string to binary.
   def to_binary : Array(String)
     binary = [] of String
     self.bytes.each do |byte|
@@ -300,7 +300,7 @@ class String
     binary
   end
 
-  # Converts this String to cow speech.
+  # Converts this string to cow speech.
   # This method allows you to communicate with cows.
   def to_cow_speech : String
     String.build do |io|
@@ -315,10 +315,13 @@ class String
 end
 
 struct Char
-  # Returns `true` if this Char is a vowel.
+  # Makes a new `String` by adding str to itself times times.
+  def *(times : Int)
+    self.to_s*other
+  end
+
+  # Returns `true` if this char is a vowel.
   def vowel? : Bool
     "aeiou".includes? self.downcase
   end
 end
-
-p "hello cow".to_cow_speech 
